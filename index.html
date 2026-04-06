@@ -194,6 +194,21 @@
       border-color: var(--gold) !important;
     }
 
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 5001;
+    }
+
+    .burger span {
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+      transition: 0.3s;
+    }
+
     .wrap {
       max-width: 1200px;
       margin: 0 auto;
@@ -1414,79 +1429,67 @@
     @media(max-width:900px) {
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2rem;
       }
 
-      .hero-card {
-        display: none;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .project-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .p-card.featured {
-        grid-column: span 1;
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .test-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .skill-cat.large,
-      .skill-cat.small {
-        grid-column: span 1;
-      }
-
-      .skill-list-modern {
-        grid-template-columns: 1fr;
-      }
-
-      .exp-card {
-        grid-template-columns: 1fr;
-      }
-
-      .exp-period {
-        text-align: left;
-      }
-    }
-
-    @media(max-width:600px) {
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .project-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-links {
-        display: none;
+      .hero-title {
+        font-size: 1.2rem;
       }
 
       .hero-name {
-        font-size: 3rem;
+        font-size: 3.5rem;
       }
+
+      .burger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 80%;
+        max-width: 300px;
+        background: var(--surface);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 5000;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+      .burger.active span:nth-child(2) { opacity: 0; }
+      .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+      .services-grid, .project-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .p-card { height: 300px; }
+      
+      .wrap { padding: 0 5vw; }
+      section { padding: 80px 0; }
+    }
+
+    @media(max-width:600px) {
+      .hero-name { font-size: 2.8rem; }
+      .hero-desc { font-size: 0.9rem; }
+      .section-h { font-size: 2rem; }
+      
+      .services-grid, .project-grid, .stat-row {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -1502,14 +1505,19 @@
   <!-- NAV -->
   <nav>
     <a href="#" class="logo">Roshani <em>Bhaskar</em></a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#projects">Work</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#about" onclick="closeMenu()">About</a></li>
+      <li><a href="#services" onclick="closeMenu()">Services</a></li>
+      <li><a href="#projects" onclick="closeMenu()">Work</a></li>
+      <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
+      <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+      <li><a href="#contact" class="nav-cta" onclick="closeMenu()">Hire Me</a></li>
     </ul>
+    <div class="burger" id="burger-btn" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -2251,6 +2259,21 @@
         }, 1500);
       }
       // Otherwise, the form will submit normally to FormSubmit
+    }
+
+    /* MOBILE MENU LOGIC */
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      const burger = document.getElementById('burger-btn');
+      menu.classList.toggle('active');
+      burger.classList.toggle('active');
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById('nav-menu');
+      const burger = document.getElementById('burger-btn');
+      menu.classList.remove('active');
+      burger.classList.remove('active');
     }
   </script>
 </body>

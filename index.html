@@ -213,7 +213,8 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 420px;
+      grid-template-columns: 1fr;
+      text-align: center;
       gap: 5rem;
       align-items: center;
       width: 100%;
@@ -231,6 +232,7 @@
       margin-bottom: 2rem;
       opacity: 0;
       animation: fadeUp 0.8s 0.2s forwards;
+      justify-content: center;
     }
 
     .hero-eyebrow::before {
@@ -284,7 +286,9 @@
       color: var(--muted);
       font-size: 1rem;
       line-height: 1.85;
-      max-width: 480px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
       margin-bottom: 3rem;
       opacity: 0;
       animation: fadeUp 0.8s 0.65s forwards;
@@ -296,6 +300,7 @@
       flex-wrap: wrap;
       opacity: 0;
       animation: fadeUp 0.8s 0.8s forwards;
+      justify-content: center;
     }
 
     .btn-primary {
@@ -1529,34 +1534,6 @@
           <div class="hero-btns">
             <a href="#projects" class="btn-primary">View My Work ↓</a>
             <a href="#contact" class="btn-ghost">Get In Touch</a>
-          </div>
-        </div>
-
-        <div class="hero-card g-card">
-          <div class="hero-avatar">RB</div>
-          <h3>Roshani Bhaskar</h3>
-          <p class="subtitle">Senior Full-Stack Developer</p>
-          <div class="stat-row">
-            <div class="stat-box g-card">
-              <span class="num">2+</span>
-              <span class="lbl">Years Exp.</span>
-            </div>
-            <div class="stat-box g-card">
-              <span class="num">15+</span>
-              <span class="lbl">Projects</span>
-            </div>
-            <div class="stat-box g-card">
-              <span class="num">10+</span>
-              <span class="lbl">Clients</span>
-            </div>
-            <div class="stat-box g-card">
-              <span class="num">100%</span>
-              <span class="lbl">Quality</span>
-            </div>
-          </div>
-          <div class="avail-badge">
-            <span class="live-dot"></span>
-            Currently @ ADclamor · Open to freelance
           </div>
         </div>
       </div>

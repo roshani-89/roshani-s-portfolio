@@ -1118,66 +1118,6 @@
       background: var(--gold-dim);
     }
 
-    /* ─── TESTIMONIALS ─── */
-    .test-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .test-card {
-      padding: 2.5rem;
-    }
-
-    .test-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      font-style: italic;
-      font-weight: 300;
-      color: var(--white);
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
-    .test-author {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .test-av {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold), var(--gold-light));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #09090f;
-      flex-shrink: 0;
-    }
-
-    .test-name {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--white);
-    }
-
-    .test-pos {
-      font-size: 0.75rem;
-      color: var(--gold);
-    }
-
-    .test-stars {
-      color: var(--gold);
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      margin-bottom: 1.2rem;
-    }
-
     /* ─── CONTACT ─── */
     #contact {
       padding-bottom: 160px;
@@ -1499,6 +1439,20 @@
       .exp-tags-mobile .s-tag {
         width: auto !important;
         flex: 0 1 auto !important;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .skill-cat {
+        grid-column: span 1 !important;
+        padding: 1.5rem;
+      }
+
+      .skill-list-modern {
+        grid-template-columns: 1fr;
       }
       
       .wrap { padding: 0 5vw; }
@@ -2054,57 +2008,6 @@
     </section>
   </div>
 
-  <!-- TESTIMONIALS -->
-  <div class="wrap">
-    <section id="testimonials">
-      <div class="reveal" style="text-align:center; margin-bottom:4rem;">
-        <span class="section-label" style="justify-content:center;">Testimonials</span>
-        <h2 class="section-h" style="text-align:center;">Words from <em>those</em><br>I've worked with</h2>
-      </div>
-      <div class="test-grid">
-
-        <div class="g-card test-card reveal">
-          <div class="test-stars">★★★★★</div>
-          <p class="test-quote">"Roshani's ability to simplify complex technical systems is remarkable. Our conversion
-            rate increased by 40% after the redesign."</p>
-          <div class="test-author">
-            <div class="test-av" style="background: linear-gradient(135deg, #46332a, var(--gold));">AT</div>
-            <div>
-              <div class="test-name">Alex Thorne</div>
-              <div class="test-pos">CTO at FinStream</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="g-card test-card reveal" style="transition-delay:0.1s">
-          <div class="test-stars">★★★★★</div>
-          <p class="test-quote">"Efficient, professional, and a keen eye for aesthetics. One of the best full-stack
-            engineers we've ever collaborated with."</p>
-          <div class="test-author">
-            <div class="test-av" style="background: linear-gradient(135deg, var(--gold), var(--gold-light));">SJ</div>
-            <div>
-              <div class="test-name">Sarah Jen</div>
-              <div class="test-pos">Founder, Aura</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="g-card test-card reveal" style="transition-delay:0.2s">
-          <div class="test-stars">★★★★★</div>
-          <p class="test-quote">"The clean architecture Roshani implemented allowed us to scale our platform to 100k
-            users without a single hitch."</p>
-          <div class="test-author">
-            <div class="test-av" style="background: linear-gradient(135deg, #241814, #46332a);">MR</div>
-            <div>
-              <div class="test-name">Marco Rossi</div>
-              <div class="test-pos">Product Lead</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  </div>
 
   <!-- CONTACT -->
   <div class="wrap">

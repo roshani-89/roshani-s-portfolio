@@ -1,0 +1,126 @@
+<!-- ─── SKILLS — paste this to replace the old <section id="skills"> block ─── -->
+
+<!-- Add this CSS inside your existing <style> tag -->
+<!--
+.skills-filter { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
+.f-pill {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.45rem 1.1rem; border-radius: 100px;
+  border: 1px solid var(--border); background: var(--surface);
+  cursor: pointer; font-size: 0.72rem; font-weight: 500;
+  color: var(--muted); transition: 0.25s; user-select: none;
+  letter-spacing: 0.04em;
+}
+.f-pill .fdot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.f-pill.active, .f-pill:hover { background: var(--gold-dim); color: var(--white); border-color: var(--border-bright); }
+
+.skills-summary { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-bottom: 3rem; }
+.sk-sum { background: var(--surface2); border: 1px solid var(--border); border-radius: 16px; padding: 1.4rem 1rem; text-align: center; }
+.sk-sum .n { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--gold); display: block; line-height: 1; }
+.sk-sum .l { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.4rem; display: block; }
+
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1rem; }
+.sk-node {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 18px; padding: 1.4rem 1.5rem;
+  transition: 0.35s; position: relative; overflow: hidden; cursor: default;
+}
+.sk-node:hover { border-color: var(--border-bright); background: var(--surface2); transform: translateY(-3px); }
+.sk-node.hidden { display: none; }
+.sk-node .accent { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; opacity: 0.5; }
+.sk-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
+.sk-name { font-size: 0.88rem; font-weight: 600; color: var(--white); }
+.sk-pct { font-size: 0.75rem; color: var(--gold); font-weight: 500; }
+.sk-track { height: 2px; background: rgba(201,169,110,0.1); border-radius: 2px; overflow: hidden; margin-bottom: 0.7rem; }
+.sk-fill { height: 100%; border-radius: 2px; transform: scaleX(0); transform-origin: left; transition: transform 1s cubic-bezier(0.16,1,0.3,1); }
+.sk-cat-tag { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+
+@media(max-width:600px) { .skills-summary { grid-template-columns: 1fr 1fr; } }
+-->
+
+<section id="skills">
+  <div class="reveal" style="margin-bottom:3.5rem;">
+    <span class="section-label">Toolkit</span>
+    <h2 class="section-h">Skills &amp; <em>expertise</em></h2>
+  </div>
+
+  <!-- SUMMARY STATS -->
+  <div class="skills-summary reveal">
+    <div class="sk-sum"><span class="n">20</span><span class="l">Technologies</span></div>
+    <div class="sk-sum"><span class="n">4</span><span class="l">Domains</span></div>
+    <div class="sk-sum"><span class="n">2+</span><span class="l">Years Exp.</span></div>
+    <div class="sk-sum"><span class="n">95%</span><span class="l">Top Skill</span></div>
+  </div>
+
+  <!-- FILTER PILLS -->
+  <div class="skills-filter reveal" style="transition-delay:0.1s">
+    <div class="f-pill active" data-cat="all"><span class="fdot" style="background:#888"></span> All Skills</div>
+    <div class="f-pill" data-cat="frontend"><span class="fdot" style="background:#5DCAA5"></span> Frontend</div>
+    <div class="f-pill" data-cat="backend"><span class="fdot" style="background:#7F77DD"></span> Backend</div>
+    <div class="f-pill" data-cat="design"><span class="fdot" style="background:#D85A30"></span> Design & CMS</div>
+    <div class="f-pill" data-cat="devops"><span class="fdot" style="background:#BA7517"></span> DevOps</div>
+  </div>
+
+  <!-- SKILL CARDS -->
+  <div class="skills-grid reveal" id="skills-grid" style="transition-delay:0.15s"></div>
+</section>
+
+<!-- Skills JS — add before closing </script> or in a new <script> block -->
+<script>
+(function(){
+  const SKILLS = [
+    { name:"JavaScript",    pct:95, cat:"frontend", color:"#5DCAA5" },
+    { name:"React.js",      pct:92, cat:"frontend", color:"#5DCAA5" },
+    { name:"CSS / Tailwind",pct:94, cat:"frontend", color:"#5DCAA5" },
+    { name:"TypeScript",    pct:80, cat:"frontend", color:"#5DCAA5" },
+    { name:"Next.js",       pct:75, cat:"frontend", color:"#5DCAA5" },
+    { name:"HTML5",         pct:98, cat:"frontend", color:"#5DCAA5" },
+    { name:"Node.js",       pct:88, cat:"backend",  color:"#7F77DD" },
+    { name:"REST APIs",     pct:92, cat:"backend",  color:"#7F77DD" },
+    { name:"PostgreSQL",    pct:82, cat:"backend",  color:"#7F77DD" },
+    { name:"MongoDB",       pct:78, cat:"backend",  color:"#7F77DD" },
+    { name:"GraphQL",       pct:70, cat:"backend",  color:"#7F77DD" },
+    { name:"Python",        pct:65, cat:"backend",  color:"#7F77DD" },
+    { name:"Figma",         pct:88, cat:"design",   color:"#D85A30" },
+    { name:"WordPress",     pct:90, cat:"design",   color:"#D85A30" },
+    { name:"Webflow",       pct:82, cat:"design",   color:"#D85A30" },
+    { name:"SEO",           pct:80, cat:"design",   color:"#D85A30" },
+    { name:"Git & GitHub",  pct:92, cat:"devops",   color:"#BA7517" },
+    { name:"Vercel/Netlify",pct:85, cat:"devops",   color:"#BA7517" },
+    { name:"Docker",        pct:68, cat:"devops",   color:"#BA7517" },
+    { name:"AWS",           pct:65, cat:"devops",   color:"#BA7517" },
+  ];
+  const CAT_LABELS = { frontend:"Frontend", backend:"Backend", design:"Design & CMS", devops:"DevOps" };
+  const grid = document.getElementById('skills-grid');
+
+  SKILLS.forEach(s => {
+    const d = document.createElement('div');
+    d.className = 'sk-node'; d.dataset.cat = s.cat;
+    d.innerHTML = `<div class="accent" style="background:${s.color}"></div>
+      <div class="sk-top"><span class="sk-name">${s.name}</span><span class="sk-pct">${s.pct}%</span></div>
+      <div class="sk-track"><div class="sk-fill" style="background:${s.color};width:${s.pct}%"></div></div>
+      <span class="sk-cat-tag">${CAT_LABELS[s.cat]}</span>`;
+    grid.appendChild(d);
+  });
+
+  const skillObs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) setTimeout(()=>{ e.target.querySelectorAll('.sk-fill').forEach(f=>f.style.transform='scaleX(1)'); },80); });
+  },{threshold:0.1});
+  skillObs.observe(grid);
+
+  document.querySelectorAll('.f-pill').forEach(pill=>{
+    pill.addEventListener('click',()=>{
+      document.querySelectorAll('.f-pill').forEach(p=>p.classList.remove('active'));
+      pill.classList.add('active');
+      const cat = pill.dataset.cat;
+      document.querySelectorAll('.sk-node').forEach(n=>{
+        n.classList.toggle('hidden', cat!=='all' && n.dataset.cat!==cat);
+        n.querySelectorAll('.sk-fill').forEach(f=>f.style.transform='scaleX(0)');
+      });
+      setTimeout(()=>{
+        document.querySelectorAll('.sk-node:not(.hidden) .sk-fill').forEach(f=>f.style.transform='scaleX(1)');
+      },40);
+    });
+  });
+})();
+</script>
